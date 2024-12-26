@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/live";
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
 
 const EVENTS_QUERY = defineQuery(`*[
   _type == "event"
@@ -15,7 +14,7 @@ export default async function IndexPage() {
     <main className="flex bg-gray-100 min-h-screen flex-col p-24 gap-12">
       <h1 className="text-4xl font-bold tracking-tighter">Events</h1>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        {events.map((event: { _id: Key | null | undefined; slug: { current: any; }; name: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; date: string | number | Date; }) => (
+        {events.map((event) => (
           <li className="bg-white p-4 rounded-lg" key={event._id}>
             <Link
               className="hover:underline"
